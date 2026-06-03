@@ -1,0 +1,10 @@
+NEST-DEPTHN-PRIME-VERIFY|ts=2026-06-03T21:56:46.090Z|branching=2|depth=7|prime=true|nodes=255|pids_per_node=2|total_pids=510|bytes_per_node=16|tree_bytes=4080
+RUN-CLEAN|apex_subtree_ok=true|expect=true|PASS=true
+LEVEL-1|tamper=R.0|apex_subtree_ok=false|failing=R.0@depth1|CAUGHT=true
+LEVEL-2|tamper=R.0.0|apex_subtree_ok=false|failing=R.0.0@depth2|CAUGHT=true
+LEVEL-3|tamper=R.0.0.0|apex_subtree_ok=false|failing=R.0.0.0@depth3|CAUGHT=true
+LEVEL-4|tamper=R.0.0.0.0|apex_subtree_ok=false|failing=R.0.0.0.0@depth4|CAUGHT=true
+LEVEL-5|tamper=R.0.0.0.0.0|apex_subtree_ok=false|failing=R.0.0.0.0.0@depth5|CAUGHT=true
+LEVEL-6|tamper=R.0.0.0.0.0.0|apex_subtree_ok=false|failing=R.0.0.0.0.0.0@depth6|CAUGHT=true
+LEVEL-7|tamper=R.0.0.0.0.0.0.0|apex_subtree_ok=false|failing=R.0.0.0.0.0.0.0@depth7|CAUGHT=true
+VERDICT|depth=7(prime=true)|clean-apex-ok=true|EVERY-LEVEL-CATCHES-CONFABULATION=true

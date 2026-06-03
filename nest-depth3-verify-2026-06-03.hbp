@@ -1,0 +1,4 @@
+NEST-DEPTH3-VERIFY|ts=2026-06-03T21:54:24.637Z|branching=3|depth=3|nodes=40|pids_per_node=2|total_pids=80|bytes_per_node=16|tree_bytes=640
+RUN-CLEAN|apex_addr=R|apex_gate_ok=true|apex_rollup=54a76941c8e67be0|expect=true|PASS=true
+RUN-TAMPERED|injected_confabulation_at=R.1.2.0(depth-3)|apex_gate_ok=false|caught_path=R.1.2.0|expect=false|GATE-CAUGHT=true
+VERDICT|depth-3 nest runs=true|corrective-gate-catches-confabulation-at-depth=true|consent-clean-only=true
