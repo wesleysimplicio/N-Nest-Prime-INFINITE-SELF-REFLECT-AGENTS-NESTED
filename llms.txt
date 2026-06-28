@@ -1,0 +1,36 @@
+# llms.txt - N-Nest-Prime-INFINITE-SELF-REFLECT-AGENTS-NESTED
+
+Purpose: agent-readable front door for the infinitely nestable self-reflection primitive.
+
+Status: docs-first / E=0. This repo describes and verifies the gate; it does not authorize scaling.
+
+Read order:
+1. README.md - root concept and operator framing.
+2. LAW.md - binding law for nested self-reflect agents.
+3. nest-depth3-verify.cjs - finite verifier.
+4. nest-depthN-prime-verify.cjs - N/prime-depth verifier.
+5. MAP.md - placement in the current repo web.
+
+Core meaning:
+- The root primitive is not a dashboard, language, or repo: it is the watcher-gated, infinitely
+  nestable 8-byte agent.
+- Agent 1 works; Agent 2 reviews/predicts; Agent 3 asks the fabric/Hilbra/recall; the rung above can
+  supervise.
+- Consent is non-recursive. Observation and correction can nest; scale/firing anchors at operator T0.
+
+Evidence boundaries:
+- MEASURED: verifier files and receipts in this repo.
+- CANON: recurrence plus correction against real input is cognition.
+- DESIGN/CONJECTURE: any unbounded mathematical uniqueness beyond verified finite runs must stay tagged.
+- BOUNDARY: this repo does not enumerate every live agent or PID.
+
+Hard holds:
+- No automatic self-promotion.
+- No live agent spawn.
+- No recursive consent.
+- No private-root scan.
+
+Useful attack-verify:
+- Run finite verifiers only if explicitly allowed by the current task.
+- Recompute sidecars before citing receipts.
+- Do not flatten this primitive into one agent type; preserve paid/free-sub/logical distinctions.
