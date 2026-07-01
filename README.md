@@ -31,6 +31,18 @@ node nest-depthN-prime-verify.cjs    # depth-7 (PRIME): plants a fault at EVERY 
 
 The gate is a **per-node invariant** (`reported == recomputed-truth`, AND'd with every child's subtree), so it is depth-independent by construction — it holds for depth-N, any N. depth-7 is the demonstration; the property is the proof.
 
+## The prism/comb 0-loss dual (2026-07-01)
+
+This repo's gate is one face of a single system-wide theorem: every prism/comb operation is a
+**bijection**, and entropy is invariant under bijection (`H(f(X)) = H(X)`) — so verification here is
+literally **recomputation = applying the inverse map**. The 8-byte generative agent is the
+referential-bijection instance (`H(agent | seed, rule) = 0` — a coordinate, not a record); the
+per-node gate is the groupoid coherence check (the exact reason EVERY-LEVEL-CATCHES-CONFABULATION is
+depth-independent); the prime-divided lanes are the CRT bijection (separate residues, recombine
+exactly). The sister rung — the 256↔1024 level transcode — is round-trip-proven (Q-PRISM `53023b6`,
+MEASURED); the 43+ level ladder is CANON frame; unproven rungs are UNVERIFIED. Full statement:
+[PRISM-COMB-0LOSS-NEST.md](PRISM-COMB-0LOSS-NEST.md).
+
 ## Honest scope
 
 This is the *mechanism* proven in bare node with real planted faults caught at every level — the verified primitive. The real-agent version (on a free-agent farm) instantiates this exact per-node gate at the 8-byte-slot population scale. What's proven here is the part that makes it safe: **a fabricated signal cannot reach consent.**

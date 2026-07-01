@@ -50,6 +50,13 @@ tables below to see where you are; follow the links to walk the rest.
 | `-6-cyl-generator` | satellite generator |
 | `asolaria-whiteroom-engine` · `35-TB-google-AI-Ultra-migration` | (= LEG-1 + LEG-4, listed under External legs) |
 
+## Prism/Comb 0-loss (2026-07-01) — satellite
+Every prism/comb operation is a bijection (`H(f(X)) = H(X)`): 0-loss re-relation, never
+compression-below-entropy. MEASURED rung: the 256↔1024 transcode round-trip (Q-PRISM `53023b6`);
+CANON: 43+ level groupoid ladder · CRT prime lanes · the waves-cascades duality (forward comb =
+avoid-collisions, backward prism = cause-collisions/many→1). This repo carries the **integrity
+dual** — the per-node gate = the inverse map — see `PRISM-COMB-0LOSS-NEST.md`.
+
 ## Current state & evolution (2026-06-28) — read this, don't flatten it
 Asolaria is a **2.5-month archaeology**, not a flat stack. **Capability lineage:** auto-approval switch →
 dashboard → multi-agent → local+web MCP + code-wiki → index language (pixels-first) → cubes-as-catalogs
