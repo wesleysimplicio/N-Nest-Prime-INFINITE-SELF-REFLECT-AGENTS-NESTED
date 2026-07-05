@@ -1,20 +1,33 @@
 #!/usr/bin/env node
-// nest-depth3-verify.cjs — depth-3 nested self-reflection, EMPIRICALLY VERIFIED.
-// Each node = agent PID + a SECOND watcher PID (the self-reflect agent that reads the
-// node's work and recomputes what it SHOULD be). Brown-Hilbert port.port.port address.
-// Corrective gate at EVERY level: a parent authorizes a child only if the child's
-// REPORTED output == the watcher's independently-recomputed ground truth.
-// Recurrence nests; consent (the clean roll-up to apex) only fires if every level passes.
-// Proof: run CLEAN (apex VERIFIED) + run with a planted confabulation (gate CATCHES it,
-// apex correctly UNVERIFIED, names the exact nested path). No fake-green — the gate must bite.
+/**
+ * nest-depth3-verify.cjs — depth-3 nested self-reflection, EMPIRICALLY VERIFIED.
+ *
+ * Each node = agent PID + a SECOND watcher PID (the self-reflect agent that reads the
+ * node's work and recomputes what it SHOULD be). Brown-Hilbert port.port.port address.
+ * Corrective gate at EVERY level: a parent authorizes a child only if the child's
+ * REPORTED output == the watcher's independently-recomputed ground truth.
+ * Recurrence nests; consent (the clean roll-up to apex) only fires if every level passes.
+ *
+ * Proof: run CLEAN (apex VERIFIED) + run with a planted confabulation (gate CATCHES it,
+ * apex correctly UNVERIFIED, names the exact nested path). No fake-green — the gate must bite.
+ */
 const crypto = require('crypto'), fs = require('fs'), path = require('path');
 const sha16 = s => crypto.createHash('sha256').update(s).digest('hex').slice(0, 16);
-const truth = seed => parseInt(sha16('work|' + seed), 16) % 1_000_000; // ground-truth value of a node's work
+/**
+ * Generate a deterministic ground-truth value for a node's work.
+ * @param {string} seed - Node address seed string.
+ * @returns {number} Integer between 0 and 999,999.
+ */
+const truth = seed => parseInt(sha16('work|' + seed), 16) % 1_000_000;
 
 const B = 3, DEPTH = 3;            // branching 3, depth 3  -> 3^3 = 27 leaves (the 3^3 wave)
 let NODES = 0, PIDS = 0;
 
-// build + run one tree; tamperPath = a node path whose REPORTED output is confabulated
+/**
+ * Build and run one tree of nested self-reflection agents.
+ * @param {string|null} tamperPath - If set, the node at this path will have a confabulated reported output.
+ * @returns {object} The root node of the tree with gate results.
+ */
 function runTree(tamperPath) {
   NODES = 0; PIDS = 0;
   function node(addr, depth) {

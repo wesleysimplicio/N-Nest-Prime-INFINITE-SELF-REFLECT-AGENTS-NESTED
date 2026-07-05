@@ -1,22 +1,36 @@
 #!/usr/bin/env node
-// nest-depthN-prime-verify.cjs — depth-N (N PRIME) nested self-reflection.
-// EVERY node carries verifiable work + a watcher PID that recomputes its true value:
-//   leaf.true   = truth(addr)
-//   internal.true = hash(addr | children's reported values)
-//   node.gate_ok = (reported === true)         <- parent checks this; catches tamper at THIS node
-//   subtree_ok   = gate_ok AND all(child.subtree_ok)
-// A confabulation at ANY depth makes that node's gate_ok=false -> bubbles to apex (subtree_ok=false)
-// and the failing path's depth = the injected level. Proof: inject one fault at EACH level 1..N,
-// verify the gate catches it at that exact level. No fake-green — every level must bite.
+/**
+ * nest-depthN-prime-verify.cjs — depth-N (N PRIME) nested self-reflection.
+ *
+ * EVERY node carries verifiable work + a watcher PID that recomputes its true value:
+ *   leaf.true   = truth(addr)
+ *   internal.true = hash(addr | children's reported values)
+ *   node.gate_ok = (reported === true)         <- parent checks this; catches tamper at THIS node
+ *   subtree_ok   = gate_ok AND all(child.subtree_ok)
+ *
+ * A confabulation at ANY depth makes that node's gate_ok=false -> bubbles to apex (subtree_ok=false)
+ * and the failing path's depth = the injected level. Proof: inject one fault at EACH level 1..N,
+ * verify the gate catches it at that exact level. No fake-green — every level must bite.
+ */
 const crypto = require('crypto'), fs = require('fs'), path = require('path');
 const sha16 = s => crypto.createHash('sha256').update(s).digest('hex').slice(0, 16);
 const truth = a => sha16('work|' + a);
 
 const B = 2;                                   // branching 2 (keeps depth-7 tree at 255 nodes)
 const N = 7;                                   // PRIME depth
+/**
+ * Check if a number is prime.
+ * @param {number} n - Integer to check.
+ * @returns {boolean} True if n is prime.
+ */
 const isPrime = n => { if (n < 2) return false; for (let i = 2; i * i <= n; i++) if (n % i === 0) return false; return true; };
 
 let nodeCount = 0;
+/**
+ * Build and run a tree of nested self-reflection agents at prime depth.
+ * @param {string|null} tamperAddr - If set, the node at this address will have a confabulated output.
+ * @returns {object} The root node of the tree with full gate and subtree results.
+ */
 function build(tamperAddr) {
   nodeCount = 0;
   function node(addr, depth) {
