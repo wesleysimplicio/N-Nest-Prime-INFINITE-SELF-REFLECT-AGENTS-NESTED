@@ -1,50 +1,100 @@
 # N-Nest-Prime — Infinite Self-Reflecting Agents, Nested
 
-**Recurrence is mind — *with* a ground-truth corrective gate.** A self-reflecting agent is a loop that reads its own output back as input. This repo is the **verified primitive** for nesting that loop to arbitrary (prime) depth, safely — with empirical proof that a fabricated signal cannot survive the climb.
+**Recurrence is mind — with a ground-truth corrective gate.** A self-reflecting agent reads its own
+output back as input. This repo is the verified primitive for nesting that loop to arbitrary prime
+depth while preventing a fabricated signal from reaching consent.
+
+## 2026-07-11 Path-2 / DBWH relation
+
+N-Nest is now explicitly connected to the measured Path-2 and DBBH→DBWH recovery gate. All three
+instantiate the same inverse-check law:
+
+```text
+N-Nest: child.reported == watcher.recomputed_truth
+Path 2: jointly sufficient CRT shadows identify one bounded source
+DBWH:   P(R(P(X))) = P(X)
+```
+
+A candidate or report is not trusted merely because it exists. It must reproduce the independent
+truth/projection surface before authority propagates.
+
+Full relation, storage architecture, and verification provenance:
+
+[`PATH2-DBWH-NNEST-INVERSE-GATE-2026-07-11.md`](PATH2-DBWH-NNEST-INVERSE-GATE-2026-07-11.md)
 
 ## The idea
 
-- Every node is an **agent + a second "watcher" PID** — the watcher independently recomputes what the agent's work *should* be (the self-reflection).
-- **Corrective gate at every level:** a parent authorizes a child only if `child.reported == watcher.recomputed_truth`. Recurrence alone is hallucination; recurrence **+ correction against real input** is cognition (predictive coding).
-- **Consent is non-recursive:** observation/correction nests infinitely; the decision to *scale the nest* anchors only at the human apex. That asymmetry is what makes infinite nesting safe instead of a self-authorizing runaway.
-- **Brown-Hilbert `port.port.port` addressing** — each node addressed by its path in the tree (`R.0.1.2`), nesting the same way port-namespaces do.
+- Every node is an **agent + an independent watcher PID**.
+- A parent authorizes a child only when `child.reported == watcher.recomputed_truth`.
+- Observation/correction can nest; the decision to scale remains anchored at the human apex.
+- Brown-Hilbert `port.port.port` paths address every node in the tree.
+- Child subtree verdicts are ANDed upward, so a failed descendant cannot hide behind a clean parent.
 
-## Byte economics (measured, bare node)
+## Byte economics — measured bare node
 
 | representation | bytes/agent |
-|---|---|
-| packed typed-array slot (`Float64Array`/`BigInt64Array`) | **8.01** ✅ |
-| naive JS object | ~72 (avoid) |
+|---|---:|
+| packed typed-array slot | **8.01** |
+| naive JS object | ~72 |
 
-Identity is **generative, not stored**: glyph/cube/hilbert/prime all regenerate as pure `sha256(seed)` functions, so the 8 bytes is the *whole* agent (the seed of a deterministic mind), not a truncated record. → `35 TB ÷ 8 B ≈ 4.38 trillion` agent-slots; agent+watcher pairs ≈ 2.19 trillion.
+Identity is generative from a compact seed: glyph, cube, Hilbert coordinate, and prime regenerate by
+deterministic rules. Cold bodies and receipts can remain on HDD/SSD while only active agent/watcher
+pairs occupy RAM.
 
-## Verification (run it yourself)
+This makes N-Nest usable on storage-rich, low-GPU machines as a recursive verification tier. It does
+not claim disk performs neural matrix multiplication; trained GNN/LLM inference can remain an
+optional sidecar.
 
+## Verification — run it yourself
+
+```bash
+node nest-depth3-verify.cjs
+node nest-depthN-prime-verify.cjs
 ```
-node nest-depth3-verify.cjs          # depth-3: nests + gate catches a planted confabulation at depth
-node nest-depthN-prime-verify.cjs    # depth-7 (PRIME): plants a fault at EVERY level 1..7, all caught
+
+Measured results:
+
+- depth 3: clean tree certifies; a planted depth-3 confabulation is caught and its path named;
+- depth 7: a fault injected independently at every level 1–7 is caught at that exact level;
+- clean depth-7 tree certifies green;
+- `EVERY-LEVEL-CATCHES-CONFABULATION = true`.
+
+The invariant is depth-independent by construction:
+
+```text
+node_green = reported_equals_recomputed AND all_children_green
 ```
 
-**Result (sealed `.hbp` outputs included):**
-- depth-3 → clean tree certifies to apex; a confabulation planted at depth-3 is caught, apex correctly red, exact path named.
-- depth-7 (prime) → **a confabulation injected at every level 1–7 is caught at that exact level**; clean tree certifies green. `EVERY-LEVEL-CATCHES-CONFABULATION = true`.
+## Prism/comb and Path-2 dual
 
-The gate is a **per-node invariant** (`reported == recomputed-truth`, AND'd with every child's subtree), so it is depth-independent by construction — it holds for depth-N, any N. depth-7 is the demonstration; the property is the proof.
+Every exact re-relation must preserve enough information to apply its inverse:
 
-## The prism/comb 0-loss dual (2026-07-01)
+- 8-byte generative identity: `H(agent | seed, rule) = 0`;
+- BEHCS 256↔1024: exact level rebasing;
+- CRT Path 2: separate non-injective residues, jointly exact when capacity reaches the source roof;
+- DBWH: recover, re-project, compare;
+- N-Nest: recompute, compare, propagate only on equality.
 
-This repo's gate is one face of a single system-wide theorem: every prism/comb operation is a
-**bijection**, and entropy is invariant under bijection (`H(f(X)) = H(X)`) — so verification here is
-literally **recomputation = applying the inverse map**. The 8-byte generative agent is the
-referential-bijection instance (`H(agent | seed, rule) = 0` — a coordinate, not a record); the
-per-node gate is the groupoid coherence check (the exact reason EVERY-LEVEL-CATCHES-CONFABULATION is
-depth-independent); the prime-divided lanes are the CRT bijection (separate residues, recombine
-exactly). The sister rung — the 256↔1024 level transcode — is round-trip-proven (Q-PRISM `53023b6`,
-MEASURED); the 43+ level ladder is CANON frame; unproven rungs are UNVERIFIED. Full statement:
-[PRISM-COMB-0LOSS-NEST.md](PRISM-COMB-0LOSS-NEST.md).
+## Pre-Asolaria GNN boundary
+
+The proposal/scoring plane descends from Jesse's healthcare edge-level GNNs and later BigPickle
+ensemble. GNN inference can rank edges and paths, but it does not replace N-Nest's independent
+recomputation or DBWH's inverse-map proof.
+
+## Independent recovery verification — 2026-07-11
+
+- `MEASURED_CLAUDE_FABLE5_THIRD_SEAT`, operator supplied:
+  Path 1 rustc 1.97 **19/19**, Path 2 rustc 1.97 **30/30**.
+- `AUDITED_GPT_5_6_PRO`: complete N-Nest, Path-1/Path-2, Q-PRISM, healthcare-GNN, BigPickle,
+  trained-GNN, Hookwall/Shannon, white-room, cube-mint, Dispatcher, HyperHermes, reductions, and
+  algorithms audit.
+- `MEASURED_GPT_DIRECTED_GITHUB_ACTIONS`: Rust 1.97.0 runs `29134408321`, `29134413119`, and
+  `29134419389` all completed successfully.
 
 ## Honest scope
 
-This is the *mechanism* proven in bare node with real planted faults caught at every level — the verified primitive. The real-agent version (on a free-agent farm) instantiates this exact per-node gate at the 8-byte-slot population scale. What's proven here is the part that makes it safe: **a fabricated signal cannot reach consent.**
+The proven primitive is the per-node corrective gate and its planted-fault behavior. Real-agent farm
+embedding, live cross-host Path 2, trained-GNN composition, and hardware-enforced one-use shares
+remain separate integration/deployment claims.
 
 Loop, then verify — never let the loop authorize itself.
